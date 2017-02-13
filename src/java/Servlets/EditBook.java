@@ -33,6 +33,14 @@ public class EditBook extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
+            out.println("<script  language='JavaScript' src='resources/js/notyf.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/js/notifications.js'></script>");
+            out.println("</head>");
+            out.println("<body>");
             /* TODO output your page here. You may use following sample code. */
             String id = request.getParameter("isbn");
 
@@ -45,9 +53,16 @@ public class EditBook extends HttpServlet {
             String subject = request.getParameter("subject");
             int copies = Integer.parseInt(request.getParameter("copies"));
 
+            //notification
+            out.println("<script language='JavaScript'>");
+            out.println("success('Book Data Updated!')");
+            out.println("</script>");
+
             Book book = new Book(isbn, name, author, publisher, price, edition, subject, copies);
             int status = BookAccess.update(book);
-            response.sendRedirect("ViewBook");
+
+            request.getRequestDispatcher("ViewBook").include(request, response);
+
         }
     }
 

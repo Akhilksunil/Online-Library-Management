@@ -46,6 +46,10 @@ public class EditMemberForm extends HttpServlet {
             out.println("<link rel='stylesheet' href='style.css'/>");
 
             out.println("<link rel='stylesheet' href='resources/js/jsDatePick_ltr.min.css'/>");
+            out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
+
+            out.println("<script language='JavaScript' src='resources/js/notyf.min.js'></script>");
+            out.println("<script language='JavaScript' src='resources/js/notifications.js'></script>");
             out.println("<script language='JavaScript' src='resources/js/jsDatePick.min.1.3.js'></script>");
             out.println("<script src='https://code.jquery.com/jquery-1.9.1.min.js'></script>");
             out.println("<script language='JavaScript' src='resources/js/grantBook.js'></script>");

@@ -53,9 +53,9 @@ public class ViewMember extends HttpServlet {
             List<Member> list = MemberAccess.getAllMembers();
             out.println("<table class='table table-bordered table-striped'>");
             HttpSession session = request.getSession();
-            out.print("<tr><th>ID</th><th>Name</th><th>Password</th><th>Gender</th><th>DOB</th><th>Address</th><th>Contact</th><th>Edit</th><th>Delete</th>");
+            out.print("<tr><th>ID</th><th>Name</th><th>Gender</th><th>DOB</th><th>Address</th><th>Contact</th><th>Edit</th><th>Delete</th>");
             list.forEach((member) -> {
-                out.print("<tr><td>" + member.getId() + "</td><td>" + member.getName() + "</td><td>" + member.getPassword() + "</td><td>" + member.getGender() + "</td><td>" + member.getDob() + "</td><td>" + member.getAddress() + "</td><td>" + member.getContact() + "</td></td><td><a href='EditMemberForm?id=" + member.getId() + "'>Edit</a></td><td><a href='DeleteMember?id=" + member.getId() + "'>Delete</a></td></tr>");
+                out.print("<tr><td>" + member.getId() + "</td><td>" + member.getName() + "</td><td>" + member.getGender() + "</td><td>" + member.getDob() + "</td><td>" + member.getAddress() + "</td><td>" + member.getContact() + "</td></td><td><a href='EditMemberForm?id=" + member.getId() + "'>Edit</a></td><td><a href='DeleteMember?id=" + member.getId() + "'>Delete</a></td></tr>");
             });
 
             out.println("</table>");

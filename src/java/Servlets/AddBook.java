@@ -39,7 +39,10 @@ public class AddBook extends HttpServlet {
             out.println("<head>");
             out.println("<title>Book Added</title>");
             out.println("<link rel='stylesheet' href='resources/bootstrap.min.css'/>");
+            out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
             out.println("<link rel='stylesheet' href='style.css'/>");
+            out.println("<script  language='JavaScript' src='resources/js/notyf.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/js/notifications.js'></script>");
             out.println("</head>");
             out.println("<body>");
             request.getRequestDispatcher("navadmin.html").include(request, response);
@@ -58,10 +61,14 @@ public class AddBook extends HttpServlet {
 
             Book book = new Book(isbn, name, author, publisher, price, edition, subject, copies);
             int status = BookAccess.add(book);
+            out.println("<script language='JavaScript'>");
+            out.println("success('Book Added Successfully!')");
+            out.println("</script>");
 
             out.print("<h1>Add Book Form</h1>");
-//            out.println("<p>Book is added successfully!</p> ");
+            //notification
 
+//redirect to same page for additional book adding
             request.getRequestDispatcher("AddBookForm.html").include(request, response);
 
             out.println("</div>");

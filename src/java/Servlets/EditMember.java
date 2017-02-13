@@ -36,6 +36,16 @@ public class EditMember extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
+
+            out.println("<script language='JavaScript' src='resources/js/notyf.min.js'></script>");
+            out.println("<script language='JavaScript' src='resources/js/notifications.js'></script>");
+
+            out.println("</head>");
+            out.println("<body>");
 
             int id = Integer.parseInt(request.getParameter("id"));
             String name = request.getParameter("name");
@@ -45,9 +55,16 @@ public class EditMember extends HttpServlet {
             String address = request.getParameter("address");
             String contact = request.getParameter("contact");
 
+            //notification
+            out.println("<script language='JavaScript'>");
+            out.println("success('Member Data Updated!')");
+            out.println("</script>");
+
             Member member = new Member(id, name, password, gender, dob, address, contact);
             int status = MemberAccess.update(member);
-            response.sendRedirect("ViewMember");
+            request.getRequestDispatcher("ViewMember").include(request, response);
+
+//            response.sendRedirect("ViewMember");
         }
     }
 

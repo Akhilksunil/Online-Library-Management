@@ -33,10 +33,30 @@ public class DeleteMember extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
+
+            out.println("<script  language='JavaScript' src='resources/js/notyf.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/js/notifications.js'></script>");
+
+            out.println("</head>");
+            out.println("<body>");
+
+            //notification
             /* TODO output your page here. You may use following sample code. */
             int id = Integer.parseInt(request.getParameter("id"));
-            MemberAccess.delete(id);
-            response.sendRedirect("ViewMember");
+            int res = MemberAccess.delete(id);
+            out.println("<script language='JavaScript'>");
+            if (res == 1) {
+                out.println("success('Member Deleted!')");
+            } else {
+                out.println("error('Member cannot be deleted!')");
+            }
+            out.println("</script>");
+
+            request.getRequestDispatcher("ViewMember").include(request, response);
         }
     }
 

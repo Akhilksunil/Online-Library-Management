@@ -34,7 +34,20 @@ public class ReturnBook extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
+            out.println("<script  language='JavaScript' src='resources/js/notyf.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/js/notifications.js'></script>");
+            out.println("</head>");
+            out.println("<body>");
             /* TODO output your page here. You may use following sample code. */
+            //notification
+            out.println("<script language='JavaScript'>");
+            out.println("success('Book Returned Successfully!')");
+            out.println("</script>");
+
             String isbn = request.getParameter("isbn");
             int memberId = Integer.parseInt(request.getParameter("memberId"));
             Book book = BookAccess.getBookByIsbn(isbn);
@@ -42,8 +55,7 @@ public class ReturnBook extends HttpServlet {
             book.setCopies(copies);
             BookAccess.update(book);
             IssueReturnAccess.delete(isbn, memberId);
-            out.println("Book Returned Successfully");
-            request.getRequestDispatcher("ViewBook").include(request, response);
+            request.getRequestDispatcher("MemberHome").include(request, response);
         }
     }
 

@@ -48,16 +48,21 @@ public class AddMember extends HttpServlet {
             out.println("<head>");
             out.println("<title>Login</title>");
             out.println("<link rel='stylesheet' href='resources/bootstrap.min.css'/>");
+            out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
+
             out.println("<link rel='stylesheet' href='style.css'/>");
+            out.println("<script  language='JavaScript' src='resources/js/notyf.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/js/notifications.js'></script>");
+
             out.println("</head>");
             out.println("<body>");
-//            request.getRequestDispatcher("navhome.html").include(request, response);
-//            out.println("<div class='container'>");
 
-//            out.println("Member is added successfully!");
+            //notification
+            out.println("<script language='JavaScript'>");
+            out.println("success('SignUp Successful!')");
+            out.println("</script>");
+
             request.getRequestDispatcher("index.html").include(request, response);
-//            out.println("</div>");
-//            request.getRequestDispatcher("footer.html").include(request, response);
             out.println("</body>");
             out.println("</html>");
         }

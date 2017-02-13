@@ -32,10 +32,28 @@ public class DeleteBook extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
+
+            out.println("<script  language='JavaScript' src='resources/js/notyf.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/js/notifications.js'></script>");
+
+            out.println("</head>");
+            out.println("<body>");
             /* TODO output your page here. You may use following sample code. */
             String isbn = request.getParameter("isbn");
-            BookAccess.delete(isbn);
-            response.sendRedirect("ViewBook");
+            int res = BookAccess.delete(isbn);
+            out.println("<script language='JavaScript'>");
+            if (res == 1) {
+                out.println("success('Book Deleted!')");
+            } else {
+                out.println("error('Book cannot be deleted!')");
+
+            }
+            out.println("</script>");
+            request.getRequestDispatcher("ViewBook").include(request, response);
         }
     }
 

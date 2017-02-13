@@ -35,6 +35,14 @@ public class RequestBook extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
+            out.println("<script  language='JavaScript' src='resources/js/notyf.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/js/notifications.js'></script>");
+            out.println("</head>");
+            out.println("<body>");
             /* TODO output your page here. You may use following sample code. */
             String isbn = request.getParameter("isbn");
 //            System.out.println("Debugging message");
@@ -42,10 +50,16 @@ public class RequestBook extends HttpServlet {
             Date date = new Date();
             String request_date = new SimpleDateFormat("yyyy-MM-dd").format(date);
 //            out.println("asb a");
+
+            //notification
+            out.println("<script language='JavaScript'>");
+            out.println("success('Book Requested Successfully!')");
+            out.println("</script>");
+
             Request_book req = new Request_book(id, isbn, request_date);
             int status = RequestBookAccess.add(req);
 //            out.println("Book Requested Successfully");
-            request.getRequestDispatcher("MemberHome").include(request, response);
+            request.getRequestDispatcher("ViewBook").include(request, response);
 //            response.sendRedirect("RequestSuccess");
         }
     }

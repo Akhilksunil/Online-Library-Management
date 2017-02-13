@@ -36,6 +36,14 @@ public class GrantRequest extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
+            out.println("<script  language='JavaScript' src='resources/js/notyf.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/js/notifications.js'></script>");
+            out.println("</head>");
+            out.println("<body>");
             /* TODO output your page here. You may use following sample code. */
 
             String isbn = request.getParameter("isbn");
@@ -47,13 +55,23 @@ public class GrantRequest extends HttpServlet {
             Book book = BookAccess.getBookByIsbn(isbn);
             int copies = book.getCopies();
             if (copies > 0) {
+                out.println("<script language='JavaScript'>");
+                out.println("success('Book Granted Successfully')");
+                out.println("</script>");
                 book.setCopies(copies - 1);
                 BookAccess.update(book);
                 Issue_return issue = new Issue_return(memberId, isbn, issue_date, return_date, expiry_date);
                 int status = IssueReturnAccess.add(issue);
                 RequestBookAccess.delete(isbn, memberId);
+            } else {
+                //notification
+                out.println("<script language='JavaScript'>");
+                out.println("error('Book grant not possible, Insufficient copies !')");
+                out.println("</script>");
+
             }
-            response.sendRedirect("ViewIssue");
+            request.getRequestDispatcher("ViewIssue").include(request, response);
+
         }
     }
 

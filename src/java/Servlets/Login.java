@@ -42,11 +42,11 @@ public class Login extends HttpServlet {
             out.println("<head>");
             out.println("<title>Login</title>");
             out.println("<link rel='stylesheet' href='resources/bootstrap.min.css'/>");
+            out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
             out.println("<link rel='stylesheet' href='style.css'/>");
 
-            out.println("<script language='JavaScript'>");
-            out.println("function showError(){document.getElementById('error').innerHTML = 'Incorrect Error or Password';}");
-            out.println("</script>");
+            out.println("<script  language='JavaScript' src='resources/js/notyf.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/js/notifications.js'></script>");
             out.println("</head>");
 
             out.println("<body>");
@@ -54,15 +54,12 @@ public class Login extends HttpServlet {
             String email = request.getParameter("id");
             String password = request.getParameter("password");
             if (email == "" || password == "") {
-//                document.getElementById("startTimeLabel").style.visibility = "hidden";
-
-                request.getRequestDispatcher("index.html").include(request, response);
-//                out.println("showError();");
+                email = "e";
+                password = "e";
             }
             //member
 //            int id = 3;
             if (email.equals("admin") && password.equals("admin123")) {
-//                request.getRequestDispatcher("navadmin.html").include(request, response);
                 HttpSession session = request.getSession();
                 session.setAttribute("admin", "true");
                 request.getRequestDispatcher("AdminHome").include(request, response);
@@ -71,20 +68,18 @@ public class Login extends HttpServlet {
                 int id = status ? Integer.parseInt(request.getParameter("id")) : -1;
                 status = MemberAccess.validate(id, password);
                 if (status) {
-//                    request.getRequestDispatcher("navmember.html").include(request, response);
                     HttpSession session = request.getSession();
                     session.setAttribute("member", "true");
                     session.setAttribute("memberId", id);
                     request.getRequestDispatcher("MemberHome").include(request, response);
                 } else {
-//                request.getRequestDispatcher("navhome.html").include(request, response);
-//                out.println("<h2>Admin Login</h2>");
-//                    out.println("<p>Sorry, username or password error!</p>");
-
-                    response.sendRedirect("index.html");
+//                //notification
+                    out.println("<script language='JavaScript'>");
+                    out.println("error('Check Username or Password!!')");
+                    out.println("</script>");
+                    request.getRequestDispatcher("index.html").include(request, response);
                 }
             }
-            request.getRequestDispatcher("footer.html").include(request, response);
             out.println("</body>");
             out.println("</html>");
             out.close();

@@ -129,10 +129,6 @@
         <servlet-class>Servlets.RequestBook</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>RequestSuccess</servlet-name>
-        <servlet-class>Servlets.RequestSuccess</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ViewRequest</servlet-name>
         <servlet-class>Servlets.ViewRequest</servlet-class>
     </servlet>
@@ -159,10 +155,6 @@
     <servlet>
         <servlet-name>ReturnBook</servlet-name>
         <servlet-class>Servlets.ReturnBook</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ReturnSuccess</servlet-name>
-        <servlet-class>Servlets.ReturnSuccess</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ViewPayment</servlet-name>
@@ -249,10 +241,6 @@
         <url-pattern>/RequestBook</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>RequestSuccess</servlet-name>
-        <url-pattern>/RequestSuccess</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>ViewRequest</servlet-name>
         <url-pattern>/ViewRequest</url-pattern>
     </servlet-mapping>
@@ -279,10 +267,6 @@
     <servlet-mapping>
         <servlet-name>ReturnBook</servlet-name>
         <url-pattern>/ReturnBook</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ReturnSuccess</servlet-name>
-        <url-pattern>/ReturnSuccess</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewPayment</servlet-name>
