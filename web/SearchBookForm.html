@@ -1,0 +1,23 @@
+<link rel="stylesheet" type="text/css" href="resources/js/awesomplete.css">
+<script type="text/javascript" src="resources/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/LeaVerou/awesomplete/gh-pages/awesomplete.js"></script>
+<script type="text/javascript" src="resources/js/autoCompleter.js"></script>
+<h1>Search Book Form</h1>
+<form action="SearchBook" method="post">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>
+                <input type="text" id="search" name="name" required/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" id="searchButton" value="Search Book" />
+            </td>
+        </tr>
+        <datalist id="mylist">
+        <option>hello</option>
+        </datalist>
+    </table>
+</form>
