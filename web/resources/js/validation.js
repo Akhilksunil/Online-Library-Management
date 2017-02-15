@@ -1,3 +1,4 @@
+
 function validateMemberForm() {
     if (document.addMemberForm.name.value === "") {
         error("Invalid name");
@@ -9,7 +10,7 @@ function validateMemberForm() {
         document.addMemberForm.password.focus();
         return false;
     }
-    if (document.addMemberForm.dob.value === "") {
+    if (document.addMemberForm.dob.value === "" || isInvalidDate(document.addMemberForm.dob.value)) {
         error("Invalid date of birth");
         document.addMemberForm.dob.focus();
         return false;
@@ -72,19 +73,24 @@ function validateBookForm() {
 }
 
 function validateGrantForm() {
-    if (document.addGrantForm.issue_date.value === "") {
+    if (document.addGrantForm.issue_date.value === "" || isInvalidDate(document.addGrantForm.issue_date.value)) {
         error("Invalid book Issue Date!");
         document.addGrantForm.issue_date.focus();
         return false;
     }
-    if (document.addGrantForm.return_date.value === "") {
+    if (document.addGrantForm.return_date.value === "" || isInvalidDate(document.addGrantForm.return_date.value)) {
         error("Invalid book Return Date!");
         document.addGrantForm.return_date.focus();
         return false;
     }
-    if (document.addGrantForm.expiry_date.value === "") {
+    if (document.addGrantForm.expiry_date.value === "" || isInvalidDate(document.addGrantForm.expiry_date.value)) {
         error("Invalid book Expiry Date!");
         document.addGrantForm.expiry_date.focus();
         return false;
     }
 }
+function isInvalidDate(dateString) {
+  var regEx = /^\d{4}-\d{2}-\d{2}$/;
+  return dateString.match(regEx) == null;
+}
+

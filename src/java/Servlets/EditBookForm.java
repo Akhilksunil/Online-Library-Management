@@ -46,6 +46,9 @@ public class EditBookForm extends HttpServlet {
             out.println("<link rel='stylesheet' href='style.css'/>");
             out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
 
+            out.println("<script  language='JavaScript' src='resources/jquery.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/bootstrap.min.js'></script>");
+
             out.println("<script language='JavaScript' src='resources/js/notyf.min.js'></script>");
             out.println("<script language='JavaScript' src='resources/js/notifications.js'></script>");
             out.println("<script language='JavaScript' src='resources/js/validation.js'></script>");
@@ -62,7 +65,7 @@ public class EditBookForm extends HttpServlet {
             out.print("<table>");
             out.print("<tr><td><input type='hidden' name='isbn' value='" + book.getIsbn() + "' /></td></tr>");
             out.print("<tr><td>Name:</td><td><input type='text' name='name' value='" + book.getName() + "'/></td></tr>");
-            out.print("<tr><td>Author:</td><td><input type='email' name='author' value='" + book.getAuthorName() + "'/></td></tr>");
+            out.print("<tr><td>Author:</td><td><input type='text' name='author' value='" + book.getAuthorName() + "'/></td></tr>");
             out.print("<tr><td>Publisher:</td><td><input type='text' name='publisher' value='" + book.getPublisher() + "'/></td></tr>");
             out.print("<tr><td>Price:</td><td><input type='number' name='price' value='" + book.getPrice() + "'/></td></tr>");
             out.print("<tr><td>Edition:</td><td><input type='text' name='edition' value='" + book.getEdition() + "'/></td></tr>");

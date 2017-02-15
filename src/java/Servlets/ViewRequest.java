@@ -5,12 +5,14 @@
  */
 package Servlets;
 
+import Data.Book;
 import Data.Member;
 import Data.Request_book;
 import DataAccess.MemberAccess;
 import DataAccess.RequestBookAccess;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,10 +46,19 @@ public class ViewRequest extends HttpServlet {
             out.println("<title>View Request</title>");
             out.println("<link rel='stylesheet' href='resources/bootstrap.min.css'/>");
             out.println("<link rel='stylesheet' href='style.css'/>");
+            out.println("<script  language='JavaScript' src='resources/jquery.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/bootstrap.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/js/notifications.js'></script>");
+
             out.println("</head>");
             out.println("<body>");
 //            request.getRequestDispatcher("navadmin.html").include(request, response);
-
+            //delete dialog
+            out.println("<div id='delete_message'>");
+            out.println("<h2>Are You Sure You Want To Delete This ?</h2>");
+            out.println("<input type='button' value='Delete' id='delete'>");
+            out.println("<input type='button' value='Cancel' id='cancel'>");
+            out.println("</div>");
             HttpSession session = request.getSession(false);
 
             if (session == null || session.getAttribute("admin") == null) {
@@ -62,9 +73,14 @@ public class ViewRequest extends HttpServlet {
 
                     out.println("<table class='table table-bordered table-striped'>");
                     out.print("<tr><th>Member ID</th><th>Book ISBN</th><th>Request Date</th><th>Grant</th><th>Delete</th>");
-                    list.forEach((req) -> {
-                        out.print("<tr><td>" + req.getId() + "</td><td>" + req.getIsbn() + "</td><td>" + req.getRequestDate() + "</td><td><a href='GrantRequestForm?memberId=" + req.getId() + "&isbn=" + req.getIsbn() + "'>Grant</a></td><td><a href='DeleteRequest?memberId=" + req.getId() + "&isbn=" + req.getIsbn() + "'>Delete</a></td></tr>");
-                    });
+//                    Integer count = 0;
+                    for (Iterator<Request_book> it = list.iterator(); it.hasNext();) {
+//                    list.forEach((req) -> {
+                        Request_book req = it.next();
+//                        out.print("<tr><td>" + req.getId() + "</td><td>" + req.getIsbn() + "</td><td>" + req.getRequestDate() + "</td><td><a href='GrantRequestForm?memberId=" + req.getId() + "&isbn=" + req.getIsbn() + "'>Grant</a></td><td><a href='DeleteRequest?memberId=" + req.getId() + "&isbn=" + req.getIsbn() + "'>Delete</a></td></tr>");
+                        out.print("<tr><td>" + req.getId() + "</td><td>" + req.getIsbn() + "</td><td>" + req.getRequestDate() + "</td><td><a href='GrantRequestForm?memberId=" + req.getId() + "&isbn=" + req.getIsbn() + "'>Grant</a></td><td><a href='#' onclick=\"deleteRequest(" + req.getId() + "," + req.getIsbn() + ")\" >Delete</a></td></tr>"
+                        );
+                    }
                     out.println("</table>");
 //                    request.getRequestDispatcher("ViewPayment").include(request, response);
 

@@ -42,10 +42,21 @@ public class ViewMyIssues extends HttpServlet {
             out.println("<title>My Books</title>");
             out.println("<link rel='stylesheet' href='resources/bootstrap.min.css'/>");
             out.println("<link rel='stylesheet' href='style.css'/>");
+            out.println("<script  language='JavaScript' src='resources/jquery.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/bootstrap.min.js'></script>");
+            out.println("<script language='JavaScript' src='resources/js/notifications.js'></script>");
+
             out.println("</head>");
             out.println("<body>");
             request.getRequestDispatcher("navmember.html").include(request, response);
             request.getRequestDispatcher("logout.html").include(request, response);
+
+//            delete dialog
+            out.println("<div id='confirm_message'>");
+            out.println("<h2>Are You Sure You Want To Return This ?</h2>");
+            out.println("<input type='button' value='Confirm' id='confirm'>");
+            out.println("<input type='button' value='Cancel' id='cancel_confirm'>");
+            out.println("</div>");
 
             out.println("<div class='container'>");
             out.print("<h1>My Books</h1>");
@@ -55,7 +66,7 @@ public class ViewMyIssues extends HttpServlet {
             out.println("<table class='table table-bordered table-striped'>");
             out.print("<tr><th>Book ISBN</th><th>Book Name</th><th>Issue Date</th><th>Return Date</th><th>Expiry Date</th><th>Return</th></tr>");
             list.forEach((issue) -> {
-                out.print("<tr><td>" + issue.getIsbn() + "</td><td>" + BookAccess.getBookByIsbn(issue.getIsbn()).getName() + "</td><td>" + issue.getIssueDate() + "</td><td>" + issue.getReturnDate() + "</td><td>" + issue.getExpiryDate() + "</td><td><a href='ReturnBook?memberId=" + issue.getId() + "&isbn=" + issue.getIsbn() + "'>Return</a></td></tr>");
+                out.print("<tr><td>" + issue.getIsbn() + "</td><td>" + BookAccess.getBookByIsbn(issue.getIsbn()).getName() + "</td><td>" + issue.getIssueDate() + "</td><td>" + issue.getReturnDate() + "</td><td>" + issue.getExpiryDate() + "</td><td><a href='#' onclick=\"returnBook(" + issue.getId() + "," + issue.getIsbn() + ")\">Return</a></td></tr>");
             });
             out.println("</table>");
 

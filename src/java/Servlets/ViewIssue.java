@@ -44,6 +44,9 @@ public class ViewIssue extends HttpServlet {
             out.println("<title>View Issue</title>");
             out.println("<link rel='stylesheet' href='resources/bootstrap.min.css'/>");
             out.println("<link rel='stylesheet' href='style.css'/>");
+            out.println("<script  language='JavaScript' src='resources/jquery.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/bootstrap.min.js'></script>");
+
             out.println("</head>");
             out.println("<body>");
             HttpSession session = request.getSession();

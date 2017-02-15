@@ -41,6 +41,10 @@ public class AddBook extends HttpServlet {
             out.println("<link rel='stylesheet' href='resources/bootstrap.min.css'/>");
             out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
             out.println("<link rel='stylesheet' href='style.css'/>");
+            out.println("<script  language='JavaScript' src='resources/jquery.min.js'></script>");
+
+            out.println("<script  language='JavaScript' src='resources/bootstrap.min.js'></script>");
+
             out.println("<script  language='JavaScript' src='resources/js/notyf.min.js'></script>");
             out.println("<script  language='JavaScript' src='resources/js/notifications.js'></script>");
             out.println("</head>");

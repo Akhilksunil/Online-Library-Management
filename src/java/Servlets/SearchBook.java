@@ -9,6 +9,7 @@ import Data.Book;
 import DataAccess.BookAccess;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -44,12 +45,19 @@ public class SearchBook extends HttpServlet {
             out.println("<head>");
             out.println("<title>Search Book</title>");
             out.println("<link rel='stylesheet' href='resources/bootstrap.min.css'/>");
+            out.println("<link rel='stylesheet' href='resources/js/jquery.tooltip.css'/>");
             out.println("<link rel='stylesheet' href='style.css'/>");
 
             //wikiSearch
-            out.println("<script  language='JavaScript' src='resources/jquery.min.js'></script>");
-
+            out.println("<script language='JavaScript' src='resources/jquery.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/bootstrap.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/js/jquery.tooltip.js'></script>");
             out.println("<script language='JavaScript' src='resources/js/wikiSearch.js'></script>");
+//            out.println("<script>");
+//            out.println("$(function() {");
+//            out.println("$(document).tooltip();");
+//            out.println("} );");
+//            out.println("</script>");
 
             out.println("</head>");
             out.println("<body>");
@@ -57,6 +65,12 @@ public class SearchBook extends HttpServlet {
             request.getRequestDispatcher("logout.html").include(request, response);
 
             out.println("<div class='container'>");
+            List<Book> bookList = new BookAccess().getAllBooks();
+            List<String> bookNameList = new ArrayList<>();
+            bookList.forEach((book) -> {
+                bookNameList.add(book.getName());
+            });
+            out.println("<div hidden id='bookNames'>" + bookNameList + "</div>");
 
             out.println("<h1>Search Book</h1>");
             HttpSession session = request.getSession();

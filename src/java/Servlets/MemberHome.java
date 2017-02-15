@@ -44,7 +44,11 @@ public class MemberHome extends HttpServlet {
             out.println("<title>Member Home</title>");
             out.println("<link rel='stylesheet' href='resources/bootstrap.min.css'/>");
             out.println("<link rel='stylesheet' href='style.css'/>");
+
             out.println("<script language='JavaScript' src='resources/jquery.min.js'></script>");
+//            out.println("<script  language='JavaScript' src='resources/jquery.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/bootstrap.min.js'></script>");
+
             out.println("<script language='JavaScript' src='resources/js/autoCompleter.js'></script>");
             out.println("</head>");
             out.println("<body>");

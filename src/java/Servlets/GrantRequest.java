@@ -40,8 +40,12 @@ public class GrantRequest extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
+            out.println("<script  language='JavaScript' src='resources/jquery.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/bootstrap.min.js'></script>");
+
             out.println("<script  language='JavaScript' src='resources/js/notyf.min.js'></script>");
             out.println("<script  language='JavaScript' src='resources/js/notifications.js'></script>");
+
             out.println("</head>");
             out.println("<body>");
             /* TODO output your page here. You may use following sample code. */

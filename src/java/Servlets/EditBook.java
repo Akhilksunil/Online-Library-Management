@@ -37,6 +37,9 @@ public class EditBook extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<link rel='stylesheet' href='resources/js/notyf.min.css' />");
+
+            out.println("<script  language='JavaScript' src='resources/jquery.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/bootstrap.min.js'></script>");
             out.println("<script  language='JavaScript' src='resources/js/notyf.min.js'></script>");
             out.println("<script  language='JavaScript' src='resources/js/notifications.js'></script>");
             out.println("</head>");
@@ -54,13 +57,13 @@ public class EditBook extends HttpServlet {
             int copies = Integer.parseInt(request.getParameter("copies"));
 
             //notification
-            out.println("<script language='JavaScript'>");
-            out.println("success('Book Data Updated!')");
-            out.println("</script>");
-
             Book book = new Book(isbn, name, author, publisher, price, edition, subject, copies);
             int status = BookAccess.update(book);
-
+            if (status == 1) {
+                out.println("<script language='JavaScript'>");
+                out.println("success('Book Data Updated!')");
+                out.println("</script>");
+            }
             request.getRequestDispatcher("ViewBook").include(request, response);
 
         }

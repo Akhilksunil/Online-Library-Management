@@ -39,6 +39,10 @@ public class AddBookForm extends HttpServlet {
             out.println("<title>Add Book</title>");
             out.println("<link rel='stylesheet' href='resources/bootstrap.min.css'/>");
             out.println("<link rel='stylesheet' href='style.css'/>");
+
+            out.println("<script  language='JavaScript' src='resources/jquery.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/bootstrap.min.js'></script>");
+
             out.println("</head>");
             out.println("<body>");
             request.getRequestDispatcher("navadmin.html").include(request, response);
@@ -60,7 +64,6 @@ public class AddBookForm extends HttpServlet {
             request.getRequestDispatcher("footer.html").include(request, response);
             out.println("</body>");
             out.println("</html>");
-
             out.close();
         }
     }

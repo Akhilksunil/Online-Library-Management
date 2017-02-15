@@ -52,6 +52,9 @@ public class GrantRequestForm extends HttpServlet {
             out.println("<link rel='stylesheet' href='resources/js/jsDatePick_ltr.min.css'/>");
             out.println("<script language='JavaScript' src='resources/js/jsDatePick.min.1.3.js'></script>");
             out.println("<script src='https://code.jquery.com/jquery-1.9.1.min.js'></script>");
+//            out.println("<script  language='JavaScript' src='resources/jquery.min.js'></script>");
+            out.println("<script  language='JavaScript' src='resources/bootstrap.min.js'></script>");
+
             out.println("<script language='JavaScript' src='resources/js/grantBook.js'></script>");
             out.println("<script language='JavaScript' src='resources/js/validation.js'></script>");
 
