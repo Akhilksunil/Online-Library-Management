@@ -2,7 +2,7 @@ $(document).ready(function() {
     $("#regTitle").html("Hello World");
 
     $('.editTags').click(function() {
-        document.getElementById("editIsbn").value = this.id;
+        // document.getElementById("editIsbn").value = this.id;
         modal.style.display = "block";
         //fill data to edit
         var Row = document.getElementById(this.id).parentElement.parentElement;

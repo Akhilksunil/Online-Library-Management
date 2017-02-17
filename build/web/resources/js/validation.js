@@ -1,4 +1,3 @@
-
 function validateMemberForm() {
     if (document.addMemberForm.name.value === "") {
         error("Invalid name");
@@ -26,7 +25,28 @@ function validateMemberForm() {
         return false;
     }
 }
-
+function validateEditMemberForm() {
+    if (document.addMemberForm.name.value === "") {
+        error("Invalid name");
+        document.addMemberForm.name.focus();
+        return false;
+    }
+    if (document.addMemberForm.dob.value === "" || isInvalidDate(document.addMemberForm.dob.value)) {
+        error("Invalid date of birth");
+        document.addMemberForm.dob.focus();
+        return false;
+    }
+    if (document.addMemberForm.address.value === "") {
+        error("Invalid address");
+        document.addMemberForm.address.focus();
+        return false;
+    }
+    if (document.addMemberForm.contact.value === "" || isNaN(document.addMemberForm.contact.value) || document.addMemberForm.contact.value.length < 10) {
+        error("Invalid contact");
+        document.addMemberForm.contact.focus();
+        return false;
+    }
+}
 function validateBookForm() {
     if (document.addBookForm.isbn.value === "") {
         error("Invalid book isbn");
